@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CMWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="iyzicoclient.war">
+      <element id="artifact" artifact-name="CMWeb:war exploded" />
+    </root>
+  </artifact>
+</component>
