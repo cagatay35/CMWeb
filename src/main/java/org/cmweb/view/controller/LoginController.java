@@ -1,8 +1,9 @@
 package org.cmweb.view.controller;
 
 import org.cmweb.constants.ControllerConstants;
-import org.cmweb.model.User;
-import org.cmweb.services.LoginService;
+import org.cmweb.data.CustomerData;
+import org.cmweb.entity.CustomerEntity;
+import org.cmweb.services.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,36 +17,34 @@ public class LoginController extends AbstractController {
 
 
     @Autowired
-    LoginService loginService;
+    ILoginService ILoginService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String enterLoginPage(HttpServletRequest request, Model model) {
-
-        model.addAttribute("name", "cagatay");
-
-        return ControllerConstants.LOGIN_PAGE;
-    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
 
-        String username = request.getAttribute("itUserName").toString();
-        String password = request.getAttribute("itPassword").toString();
+        String username = request.getParameter("itUserName").toString();
+        String password = request.getParameter("itPassword").toString();
 
-        User user = loginService.login(username, password);
+        CustomerData user = ILoginService.login(username, password);
         if (user != null) {
-            populateUser(model, user);
+            setCustomer(user);
             return redirectToPage(ControllerConstants.HOME_PAGE);
+        } else {
+            return ControllerConstants.LOGIN_PAGE;
         }
 
+
+    }
+
+    private void populateUser(Model model, CustomerData user) {
+        model.addAttribute("user", getCustomer());
+    }
+
+
+    @Override
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String enterStep(HttpServletRequest request, Model model) {
         return ControllerConstants.LOGIN_PAGE;
     }
-
-    private void populateUser(Model model, User user) {
-
-        model.addAttribute("user", user);
-
-    }
-
-
 }

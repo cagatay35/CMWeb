@@ -12,7 +12,6 @@
 <spring:url value="/login" var="loginUrl"/>
 <div>Hello this is ${name}</div>
 <form:form action="${loginUrl}" method="post">
-
     <div>
         Username : <input type="text" id="itUserName" name="itUserName">
         Password : <input type="password" id="itPassword" name="itPassword">

@@ -9,10 +9,11 @@
     <context:annotation-config/>
 
 
-    <bean id="loginDao" class="org.cmweb.dao.impl.LoginDaoImpl"/>
+    <bean id="loginDao" class="org.cmweb.repository.impl.LoginRepository"/>
 
-    <bean id="loginService" class="org.cmweb.services.impl.LoginServiceImpl">
-        <property name="loginDao" ref="loginDao"/>
+    <bean id="loginService" class="org.cmweb.services.impl.LoginService">
+        <property name="loginRepository" ref="loginDao"/>
     </bean>
+
 
 </beans>
