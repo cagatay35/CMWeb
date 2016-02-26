@@ -1,0 +1,26 @@
+package org.cmweb.webservices.model;
+
+import java.io.Serializable;
+
+public class ResponseResult implements Serializable{
+
+    private int resultCode;
+    private String resultDesc;
+
+
+    public int getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(int resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getResultDesc() {
+        return resultDesc;
+    }
+
+    public void setResultDesc(String resultDesc) {
+        this.resultDesc = resultDesc;
+    }
+}
