@@ -1,4 +1,4 @@
-package org.cmweb.services;
+package org.cmweb.services.login;
 
 import org.cmweb.data.CustomerData;
 

@@ -11,7 +11,7 @@
 
     <bean id="loginDao" class="org.cmweb.repository.impl.LoginRepository"/>
 
-    <bean id="loginService" class="org.cmweb.services.impl.LoginService">
+    <bean id="loginService" class="org.cmweb.services.login.impl.LoginService">
         <property name="loginRepository" ref="loginDao"/>
     </bean>
 

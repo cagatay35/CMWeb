@@ -1,14 +1,13 @@
-package org.cmweb.services.impl;
+package org.cmweb.services.login.impl;
 
 import org.cmweb.converters.CustomerConverter;
 import org.cmweb.data.CustomerData;
 import org.cmweb.entity.CustomerEntity;
 import org.cmweb.repository.ILoginRepository;
-import org.cmweb.services.ILoginService;
+import org.cmweb.services.login.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
 
 

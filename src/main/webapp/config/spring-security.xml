@@ -1,13 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-
+        http://www.springframework.org/schema/context/spring-context.xsd
+		">
     <context:annotation-config/>
 
+    <security:http disable-url-rewriting="true" pattern="/login/**" use-expressions="true">
+        <security:anonymous username="anonymous" granted-authority="DEFAULT"/>
+        <security:access-denied-handler error-page="/login"/>
+
+        <security:session-management session-authentication-strategy-ref="sessionAuthStrategy"/>
+        <security:intercept-url pattern="/**" requires-channel="https"/>
+
+        <security:form-login
+                login-processing-url="/login/j_spring_security_check"
+                login-page="/login/"
+                authentication-failure-handler-ref="loginFailureHandler"
+                authentication-success-handler-ref="loginSuccessHandler"/>
+
+        <security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler"/>
 
 
-    </beans>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="authProvider"/>
+    </security:authentication-manager>
+
+    <bean id="logoutSuccessHandler" class="org.cmweb.security.handler.LogoutSuccessHandler"/>
+    <bean id="loginSuccessHandler" class="org.cmweb.security.handler.LoginSuccessHandler"/>
+    <bean id="loginFailureHandler" class="org.cmweb.security.handler.LoginFailureHandler"/>
+
+
+    <bean id="sessionAuthStrategy"
+          class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy
+                                               ">
+        <constructor-arg name="sessionRegistry" ref="sessionRegistry"/>
+        <property name="maximumSessions" value="1"/>
+        <property name="exceptionIfMaximumExceeded" value="true"/>
+    </bean>
+
+    <bean id="sessionRegistry"
+          class="org.springframework.security.core.session.SessionRegistryImpl"/>
+
+
+    <bean id="authProvider" class="org.cmweb.security.authentication.CMAuthenticatonProvider"/>
+
+
+</beans>

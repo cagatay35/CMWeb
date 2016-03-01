@@ -6,7 +6,7 @@ package org.cmweb.webservices;
 import org.apache.log4j.Logger;
 import org.cmweb.constants.RestServiceConstants;
 import org.cmweb.data.CustomerData;
-import org.cmweb.services.ILoginService;
+import org.cmweb.services.login.ILoginService;
 import org.cmweb.util.StringUtil;
 import org.cmweb.webservices.model.LoginRequest;
 import org.cmweb.webservices.model.LoginResponse;
@@ -43,19 +43,16 @@ public class CustomerInformationRestService {
             } else {
                 LOG.debug("loginService authentication success");
                 // login is successfully
-
                 // set response result success
                 responseResult.setResultCode(RestServiceConstants.SUCCESS_CODE);
                 responseResult.setResultDesc(RestServiceConstants.SUCCESS_RESULT);
                 loginResponse.setResponseResult(responseResult);
                 loginResponse.setCustomerData(customerData);
             }
-
         } else {
             LOG.debug("loginCustomer service validation failed");
             loginResponse.setResponseResult(responseResult);
         }
-
         return loginResponse;
     }
 

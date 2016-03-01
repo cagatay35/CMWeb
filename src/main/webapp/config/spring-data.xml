@@ -52,7 +52,20 @@
                 </prop>
                 <prop key="hibernate.default_schema">softwareschool</prop>
                 <prop key="hibernate.connection.autocommit">false</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/SoftwareSchool</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>org.cmweb.entity.CustomerEntity</value>
+                <value>org.cmweb.entity.CustomerSecurityEntity</value>
+                <value>org.cmweb.entity.RoleEntity</value>
+                <value>org.cmweb.entity.CityEntity</value>
+                <value>org.cmweb.entity.AddresEntity</value>
+                <value>org.cmweb.entity.DistrictEntity</value>
+                <value>org.cmweb.entity.CustomerContactEntity</value>
+            </list>
         </property>
 
     </bean>

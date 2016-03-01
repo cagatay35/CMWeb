@@ -1,10 +1,12 @@
 package org.cmweb.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customer_security", schema = "")
 public class CustomerSecurityEntity {
+
     private int securityId;
     private String username;
     private String password;
@@ -51,6 +53,7 @@ public class CustomerSecurityEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     @Override
     public boolean equals(Object o) {

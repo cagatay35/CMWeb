@@ -7,6 +7,8 @@ import java.util.Collection;
 @Entity
 @Table(name = "customer", schema = "")
 public class CustomerEntity {
+
+
     private int customerId;
     private String firstName;
     private String lastName;
@@ -14,6 +16,7 @@ public class CustomerEntity {
     private Collection<AddresEntity> addresByCustomerId;
     private CustomerSecurityEntity customerSecurity;
     private Collection<CustomerContactEntity> customerContactsByCustomerId;
+    private Collection<RoleEntity> customerRoles;
 
     @Id
     @Column(name = "customer_id", nullable = false, insertable = true, updatable = true)
@@ -105,4 +108,14 @@ public class CustomerEntity {
     public void setCustomerContactsByCustomerId(Collection<CustomerContactEntity> customerContactsByCustomerId) {
         this.customerContactsByCustomerId = customerContactsByCustomerId;
     }
+
+    @ManyToMany(cascade=CascadeType.ALL, mappedBy="customers")
+    public Collection<RoleEntity> getCustomerRoles() {
+        return customerRoles;
+    }
+
+    public void setCustomerRoles(Collection<RoleEntity> customerRoles) {
+        this.customerRoles = customerRoles;
+    }
+
 }

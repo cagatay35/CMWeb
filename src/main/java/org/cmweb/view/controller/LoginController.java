@@ -2,8 +2,7 @@ package org.cmweb.view.controller;
 
 import org.cmweb.constants.ControllerConstants;
 import org.cmweb.data.CustomerData;
-import org.cmweb.entity.CustomerEntity;
-import org.cmweb.services.ILoginService;
+import org.cmweb.services.login.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
