@@ -14,6 +14,10 @@
     <mvc:annotation-driven/>
 
     <context:component-scan base-package="org.cmweb"/>
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/angular/**" location="/angular/" />
+
+    <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -24,6 +28,7 @@
         </property>
     </bean>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/angular/**" location="/angular/"/>
 
 
 </beans>

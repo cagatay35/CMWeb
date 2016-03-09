@@ -23,12 +23,14 @@
             <value>.jsp</value>
         </property>
     </bean>
+
+
+
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <import resource="spring-data.xml"/>
     <import resource="spring-mvc-servlet.xml"/>
     <import resource="spring-beans.xml"/>
-    <import resource="spring-security.xml"/>
 
 
 </beans>
