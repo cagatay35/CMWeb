@@ -17,9 +17,6 @@ import java.util.List;
 @Transactional
 public class LoginRepository extends AbstractHibernateRepository implements ILoginRepository {
 
-    @Autowired
-    @Qualifier(value = "sessionFactory")
-    private SessionFactory sessionFactory;
 
     public CustomerEntity login(String username, String password) {
         Session session = openSession();

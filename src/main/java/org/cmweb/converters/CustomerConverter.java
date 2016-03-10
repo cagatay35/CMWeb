@@ -14,6 +14,7 @@ public class CustomerConverter implements Converter<CustomerEntity,CustomerData>
         target.setFirstName(source.getFirstName());
         target.setLastName(source.getLastName());
         target.setEmail(source.getCustomerSecurity().getEmail());
+        target.setId(source.getCustomerId());
 
         return target;
     }

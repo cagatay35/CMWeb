@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class HomeController extends AbstractController{
 
-
     @Override
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    @RequestMapping(value = "/home**",method = RequestMethod.GET)
     public String enterStep(HttpServletRequest request, Model model) {
         model.addAttribute("user",getCustomer());
         return ControllerConstants.HOME_PAGE;

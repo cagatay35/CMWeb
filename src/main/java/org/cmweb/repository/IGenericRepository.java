@@ -6,12 +6,11 @@ import java.util.List;
 public interface IGenericRepository<T> {
     public T save(T obj);
     public T persist(T obj);
-    public Boolean delete(T obj);
+    public void delete(T obj);
     public void saveOrUpdate(T o);
-    public T load(Long id);
-    public T get(Long id);
+    public T load(Integer id);
+    public T get(Integer id);
     public List<T> findAll();
-    public T edit(T obj);
-    public T find(Long obj);
     public List<T> findByParamsEquality(HashMap<String,Object> params);
+    public T merge(T o);
 }

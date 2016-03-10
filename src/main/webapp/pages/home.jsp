@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: cagatay.gokcel
@@ -8,10 +9,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+  <title>Home</title>
+  <style type="text/css">
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none !important;
+    }
+  </style>
 </head>
-<body>
-<p>Name :  ${user.firstName} ${user.lastName} </p>
-<p>E-mail :  ${user.email}</p>
+
+<body ng-app="CMApp">
+<div>
+  <h1>Greeting</h1>
+  <div ng-controller="HomeController" ng-cloak class="ng-cloak">
+    <p>The ID is {{greeting.id}}</p>
+    <p>The content is {{greeting.content}}</p>
+  </div>
+</div>
+<c:set var="commonResourcePath" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}" />
+<script src="<c:url value='${commonResourcePath}/resources/angular.min.js' />"></script>
+<script src="<c:url value='${commonResourcePath}/angular/src/app.js' />"></script>
+<script src="<c:url value='${commonResourcePath}/angular/src/services/CustomerService.js' />"></script>
+<script src="<c:url value='${commonResourcePath}/angular/src/controllers/CustomerController.js' />"></script>
 </body>
+
+
 </html>

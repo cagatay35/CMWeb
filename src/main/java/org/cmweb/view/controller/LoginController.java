@@ -19,7 +19,7 @@ public class LoginController extends AbstractController {
     ILoginService ILoginService;
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
 
         String username = request.getParameter("itUserName").toString();
@@ -42,7 +42,7 @@ public class LoginController extends AbstractController {
 
 
     @Override
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
     public String enterStep(HttpServletRequest request, Model model) {
         return ControllerConstants.LOGIN_PAGE;
     }

@@ -3,7 +3,7 @@ package org.cmweb.data;
 import java.util.Date;
 
 public abstract class UserData {
-
+    protected int id;
     protected String firstName;
     protected String lastName;
     protected Date birthdate;
@@ -13,6 +13,14 @@ public abstract class UserData {
     protected String phoneNo;
     protected SecurityData securityData;
     protected AddressData addressData;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPhoneNo() {
         return phoneNo;

@@ -9,7 +9,7 @@
     <title></title>
 </head>
 <body>
-<spring:url value="/login" var="loginUrl"/>
+<spring:url value="/user/login" var="loginUrl"/>
 <div>Hello this is ${name}</div>
 <form:form action="${loginUrl}" method="post">
     <div>
