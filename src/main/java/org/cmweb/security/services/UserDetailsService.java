@@ -11,10 +11,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Service(value = "userDetailsService")
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     @Autowired
@@ -24,6 +27,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     ICustomerRepository customerRepository;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         CustomerEntity customerEntity = customerRepository.getCustomerByUsername(username);
 
         if (customerEntity == null) {
@@ -37,9 +41,10 @@ public class UserDetailsService implements org.springframework.security.core.use
 
 
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(customerEntity.getCustomerSecurity().getEmail(), customerEntity.getCustomerSecurity().getPassword(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, populateAuthorities(customerEntity));
-
+        /*
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
+*/
         return userDetails;
     }
 
